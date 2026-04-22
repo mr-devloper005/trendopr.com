@@ -79,6 +79,13 @@ const cardStyles = {
     title: 'text-[#1f2617]',
     badge: 'bg-[#1f2617] text-[#edf5dc]',
   },
+  'press-wire': {
+    frame:
+      'rounded-2xl border border-[#e5e5e5] bg-white shadow-[0_14px_40px_rgba(23,23,23,0.06)] transition duration-300 hover:-translate-y-0.5 hover:border-[#DA0037]/25 hover:shadow-[0_20px_50px_rgba(218,0,55,0.09)]',
+    muted: 'text-[#444444]',
+    title: 'text-[#171717]',
+    badge: 'bg-[#DA0037] text-white',
+  },
 } as const
 
 const getVariantForTask = (taskKey: TaskKey) => SITE_THEME.cards[taskKey] || 'listing-elevated'
@@ -106,9 +113,23 @@ export function TaskPostCard({
   const variant = taskKey || 'listing'
   const visualVariant = cardStyles[getVariantForTask(variant)]
   const isBookmarkVariant = variant === 'sbm' || variant === 'social'
-  const imageAspect = variant === 'image' ? 'aspect-[4/5]' : variant === 'article' ? 'aspect-[16/10]' : variant === 'pdf' ? 'aspect-[4/5]' : variant === 'classified' ? 'aspect-[16/11]' : 'aspect-[4/3]'
+  const imageAspect =
+    variant === 'image'
+      ? 'aspect-[4/5]'
+      : variant === 'article' || variant === 'mediaDistribution'
+        ? 'aspect-[16/10]'
+        : variant === 'pdf'
+          ? 'aspect-[4/5]'
+          : variant === 'classified'
+            ? 'aspect-[16/11]'
+            : 'aspect-[4/3]'
   const altText = `${post.title} ${category} ${variant === 'listing' ? 'business listing' : variant} image`
-  const imageSizes = variant === 'article' ? '(max-width: 640px) 90vw, (max-width: 1024px) 48vw, 420px' : variant === 'image' ? '(max-width: 640px) 82vw, (max-width: 1024px) 34vw, 320px' : '(max-width: 640px) 85vw, (max-width: 1024px) 42vw, 340px'
+  const imageSizes =
+    variant === 'article' || variant === 'mediaDistribution'
+      ? '(max-width: 640px) 90vw, (max-width: 1024px) 48vw, 420px'
+      : variant === 'image'
+        ? '(max-width: 640px) 82vw, (max-width: 1024px) 34vw, 320px'
+        : '(max-width: 640px) 85vw, (max-width: 1024px) 42vw, 340px'
 
   const { recipe } = getFactoryState()
   const isDirectoryProduct = recipe.homeLayout === 'listing-home' || recipe.homeLayout === 'classified-home'
@@ -195,7 +216,11 @@ export function TaskPostCard({
         {variant === 'pdf' && <span className="absolute right-4 top-4 inline-flex items-center gap-1 rounded-full bg-white/88 px-3 py-1 text-[10px] font-semibold uppercase tracking-[0.18em] text-slate-950 shadow"><FileText className="h-3.5 w-3.5" />PDF</span>}
       </div>
       <div className={`flex flex-1 flex-col p-5 ${compact ? 'py-4' : ''}`}>
-        <h3 className={`line-clamp-2 font-semibold leading-snug ${variant === 'article' ? 'text-[1.35rem]' : 'text-lg'} ${visualVariant.title}`}>{post.title}</h3>
+        <h3
+          className={`line-clamp-2 font-semibold leading-snug ${variant === 'article' || variant === 'mediaDistribution' ? 'text-[1.35rem]' : 'text-lg'} ${visualVariant.title}`}
+        >
+          {post.title}
+        </h3>
         <p className={`mt-3 text-sm leading-7 ${variant === 'article' ? 'line-clamp-4' : 'line-clamp-3'} ${visualVariant.muted}`}>{getExcerpt(content.description || post.summary) || 'Explore this post.'}</p>
         <div className="mt-auto pt-4">
           {content.location && <div className={`inline-flex items-center gap-1 text-xs ${visualVariant.muted}`}><MapPin className="h-3.5 w-3.5" />{content.location}</div>}
