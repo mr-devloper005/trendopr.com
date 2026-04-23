@@ -1,58 +1,92 @@
+import { Suspense } from 'react'
 import Link from 'next/link'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
+import { TaskListClient } from '@/components/tasks/task-list-client'
 import { fetchTaskPosts } from '@/lib/task-data'
 import type { TaskKey } from '@/lib/site-config'
+import { normalizeCategory } from '@/lib/categories'
+import { parsePublishedAfter } from '@/lib/date-filters'
+import { PressArchiveToolbar } from '@/components/trendopr/press-archive-toolbar'
+import { SITE_CONFIG } from '@/lib/site-config'
 
 export const TASK_LIST_PAGE_OVERRIDE_ENABLED = true
 
-function excerpt(text?: string | null) {
-  const value = (text || '').trim()
-  if (!value) return 'Read the full post for the complete update.'
-  return value.length > 220 ? value.slice(0, 217).trimEnd() + '...' : value
-}
-
-export async function TaskListPageOverride(_: { task: TaskKey; category?: string }) {
-  const posts = await fetchTaskPosts('mediaDistribution', 24, { fresh: true })
-  const recent = posts.slice(0, 5)
+export async function TaskListPageOverride({
+  category,
+  dateRange,
+}: {
+  task: TaskKey
+  category?: string
+  dateRange?: string
+}) {
+  const posts = await fetchTaskPosts('mediaDistribution', 48, { fresh: true })
+  const normalizedCategory = category ? normalizeCategory(category) : 'all'
+  const publishedAfter = parsePublishedAfter(dateRange)
 
   return (
-    <div className="min-h-screen bg-white text-neutral-900">
+    <div className="min-h-screen bg-[#f4f4f4] text-[#171717]">
       <NavbarShell />
-      <main className="mx-auto grid max-w-6xl gap-12 px-4 py-10 sm:px-6 lg:grid-cols-[minmax(0,1fr)_280px]">
-        <div className="space-y-14">
-          {posts.map((post) => (
-            <article key={post.id} className="border-b border-neutral-200 pb-12">
-              <p className="text-center text-xs font-semibold uppercase tracking-[0.14em] text-neutral-500">{String((post.content as any)?.category || 'Update')}</p>
-              <h1 className="mx-auto mt-3 max-w-4xl text-center text-3xl font-black uppercase leading-tight tracking-[0.02em] sm:text-4xl">{post.title}</h1>
-              <div className="mt-4 flex items-center justify-center gap-3 text-sm text-neutral-500">
-                <span className="bg-neutral-800 px-3 py-1 text-white">{new Date(post.publishedAt || Date.now()).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-                <span>by {post.authorName || 'Editorial Desk'}</span>
+      <main>
+        <section className="border-b border-[#e8e8e8] bg-white">
+          <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+              <div className="max-w-2xl">
+                <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#DA0037]">Wire room</p>
+                <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Press release archive</h1>
+                <p className="mt-4 text-base leading-relaxed text-[#444444]">
+                  Browse announcements by category or narrow the feed by publish window. Open any card for the full story,
+                  imagery, and share tools.
+                </p>
               </div>
-              <p className="mx-auto mt-8 max-w-3xl text-lg leading-9 text-neutral-700">{excerpt(post.summary)}</p>
-              <div className="mt-8 text-center">
-                <Link href={`/updates/${post.slug}`} className="inline-flex rounded-full bg-neutral-800 px-8 py-3 text-sm font-medium text-white hover:bg-black">Continue Reading</Link>
-              </div>
-            </article>
-          ))}
-        </div>
-        <aside className="space-y-6">
-          <div className="border border-neutral-200 p-6">
-            <div className="flex items-center gap-0">
-              <input className="h-12 flex-1 border border-neutral-200 px-4 text-sm outline-none" placeholder="Type here to search" />
-              <button className="flex h-12 w-12 items-center justify-center bg-neutral-800 text-white">Q</button>
+              <Link
+                href="/create/mediaDistribution"
+                className="inline-flex h-12 shrink-0 items-center justify-center rounded-full border-2 border-[#DA0037] bg-white px-6 text-sm font-semibold text-[#DA0037] transition hover:bg-[#DA0037] hover:text-white"
+              >
+                Submit a release
+              </Link>
+            </div>
+
+            <div className="mt-10 rounded-2xl border border-[#ededed] bg-[#fafafa] p-5 sm:p-6">
+              <Suspense
+                fallback={
+                  <div className="h-11 w-full max-w-md animate-pulse rounded-xl bg-[#ededed]" aria-hidden />
+                }
+              >
+                <PressArchiveToolbar />
+              </Suspense>
             </div>
           </div>
-          <div className="border border-neutral-200 p-6">
-            <div className="space-y-5">
-              {recent.map((post) => (
-                <Link key={post.id} href={`/updates/${post.slug}`} className="block border-b border-neutral-200 pb-5 last:border-b-0 last:pb-0">
-                  <p className="text-base leading-7 text-neutral-700">{post.title}</p>
-                </Link>
-              ))}
-            </div>
+        </section>
+
+        <section className="mx-auto max-w-7xl px-4 py-12 sm:px-6 lg:px-8">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4">
+            <p className="text-sm text-[#444444]">
+              Showing releases for <span className="font-semibold text-[#171717]">{SITE_CONFIG.name}</span>
+            </p>
+            <form action="/search" method="get" className="flex w-full max-w-md gap-2 sm:w-auto">
+              <input
+                name="q"
+                type="search"
+                placeholder="Search headlines…"
+                className="h-11 flex-1 rounded-xl border border-[#e0e0e0] bg-white px-4 text-sm outline-none ring-[#DA0037]/25 focus:ring-2"
+              />
+              <button
+                type="submit"
+                className="h-11 rounded-xl bg-[#171717] px-5 text-sm font-semibold text-white transition hover:bg-[#2a2a2a]"
+              >
+                Search
+              </button>
+            </form>
           </div>
-        </aside>
+
+          <TaskListClient
+            task="mediaDistribution"
+            initialPosts={posts}
+            category={normalizedCategory}
+            publishedAfter={publishedAfter}
+          />
+        </section>
       </main>
       <Footer />
     </div>

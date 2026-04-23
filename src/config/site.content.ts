@@ -2,80 +2,80 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Independent news desk',
+    tagline: 'Press release distribution',
   },
   footer: {
-    tagline: 'Simple publishing for press-style updates',
+    tagline: 'Reach journalists, readers, and partners with structured releases.',
   },
   hero: {
-    badge: 'Latest updates',
-    title: ['Clear publishing, simple reading, no extra noise.'],
+    badge: 'Press desk',
+    title: ['Distribute announcements with editorial clarity.'],
     description:
-      'A minimal article-style publishing template built for regular updates, announcements, and media distribution posts.',
+      'TrendoPR.com is built for communications teams that need dependable publishing, consistent formatting, and a public archive visitors can scan in seconds.',
     primaryCta: {
-      label: 'Browse latest posts',
+      label: 'Browse press releases',
       href: '/updates',
     },
     secondaryCta: {
-      label: 'Contact us',
-      href: '/contact',
+      label: 'View pricing',
+      href: '/pricing',
     },
-    searchPlaceholder: 'Search posts',
+    searchPlaceholder: 'Search releases',
     focusLabel: 'Latest',
-    featureCardBadge: 'editor note',
-    featureCardTitle: 'Recent updates appear directly on the homepage.',
+    featureCardBadge: 'Distribution',
+    featureCardTitle: 'Wire-ready structure for every announcement.',
     featureCardDescription:
-      'The homepage works as a clean front page so new posts stay visible without decorative sections getting in the way.',
+      'Headlines, hero imagery, and body copy stay readable on every device while your archive stays easy to filter.',
   },
   home: {
     metadata: {
-      title: 'Latest updates and newsroom posts',
+      title: 'TrendoPR.com — Press release distribution',
       description:
-        'Read the latest updates, announcements, and stories through a simple archive-first publishing experience.',
-      openGraphTitle: 'Latest updates and newsroom posts',
+        'Publish announcements, reach media lists, and keep a polished public archive with TrendoPR.com.',
+      openGraphTitle: 'TrendoPR.com — Press release distribution',
       openGraphDescription:
-        'A simple publishing template for updates, announcements, and readable article pages.',
-      keywords: ['newsroom posts', 'latest updates', 'announcements', 'press articles'],
+        'Editorial-grade press releases, distribution workflows, and a searchable archive for your organization.',
+      keywords: ['press releases', 'media distribution', 'announcements', 'PR wire', 'TrendoPR'],
     },
-    introBadge: 'About',
-    introTitle: 'A quiet publishing template made for regular updates.',
+    introBadge: 'Why TrendoPR',
+    introTitle: 'Built for communications velocity without noisy feeds.',
     introParagraphs: [
-      'This template is designed for sites that publish straightforward updates and want the homepage to behave like a clean front page rather than a product landing page.',
-      'Posts are visible immediately, archives stay easy to scan, and the reading page keeps the focus on the article itself.',
-      'The interface is intentionally simple so the site feels usable, familiar, and fast to update.',
+      'The homepage highlights your newest wire stories first, then guides visitors into pricing, archive search, and contact paths.',
+      'Every page uses the same ink, accent, and spacing system so the product feels intentional—not like a recolored template.',
+      'When your feed is connected, cards populate automatically; when it is quiet, the layout still presents a confident, empty-safe frame.',
     ],
-    sideBadge: 'What it prioritizes',
+    sideBadge: 'What you get',
     sidePoints: [
-      'Recent posts directly on the homepage.',
-      'Simple archive layout with sidebar search and recent items.',
-      'Readable article pages without comments or extra modules.',
-      'A publishing-first structure that stays easy to maintain.',
+      'Structured release pages with hero imagery and share tools.',
+      'Archive filters for category and publish window.',
+      'Pricing tiers with clear distribution metaphors.',
+      'Contact surfaces that mirror enterprise PR workflows.',
     ],
     primaryLink: {
       label: 'Open archive',
       href: '/updates',
     },
     secondaryLink: {
-      label: 'Contact desk',
+      label: 'Talk to us',
       href: '/contact',
     },
   },
   cta: {
-    badge: 'Get in touch',
-    title: 'Use this template when publishing regular updates matters more than visual effects.',
+    badge: 'Ready to publish',
+    title: 'Put your next announcement on the wire with confidence.',
     description:
-      'A straightforward layout for announcements, media coverage, partner updates, and newsroom-style content.',
+      'Pair TrendoPR.com with your editorial process—draft, approve, publish, and point stakeholders to a single canonical URL.',
     primaryCta: {
-      label: 'Contact us',
+      label: 'Contact sales',
       href: '/contact',
     },
     secondaryCta: {
-      label: 'View archive',
-      href: '/updates',
+      label: 'See pricing',
+      href: '/pricing',
     },
   },
-  taskSectionHeading: 'Latest posts',
-  taskSectionDescriptionSuffix: 'Read the newest published updates.',
+  taskSectionHeading: 'Latest press releases',
+  taskSectionDescriptionSuffix: 'Fresh stories from the TrendoPR wire.',
 } as const
 
 export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'social'>, { title: string; description: string }> = {
@@ -108,8 +108,8 @@ export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'soci
     description: 'Open PDFs and downloadable files.',
   },
   mediaDistribution: {
-    title: 'Latest updates',
-    description: 'Read the latest published updates and announcements.',
+    title: 'Press releases',
+    description: 'Browse the TrendoPR.com wire—announcements, launches, and media updates.',
   },
 }
 
@@ -128,14 +128,14 @@ export const taskIntroCopy: Record<
   comment: { title: 'Comments', paragraphs: ['Commentary and response posts.'], links: [{ label: 'Home', href: '/' }] },
   org: { title: 'Organizations', paragraphs: ['Organization pages and entities.'], links: [{ label: 'Home', href: '/' }] },
   mediaDistribution: {
-    title: 'Latest updates',
+    title: 'Press releases',
     paragraphs: [
-      'This archive is designed for straightforward publishing: regular updates, announcements, and media-style posts presented in a clean reading format.',
-      'The layout stays simple so visitors can scan headlines quickly, open stories easily, and move through the archive without distraction.',
+      'This archive mirrors a classic wire: bold headlines, readable summaries, and fast filters for category and publish window.',
+      'Open any card to read the full story, share it outward, and explore related releases without leaving the TrendoPR system.',
     ],
     links: [
       { label: 'Home', href: '/' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'Pricing', href: '/pricing' },
     ],
   },
 }

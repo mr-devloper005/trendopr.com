@@ -12,9 +12,11 @@ type Props = {
   task: TaskKey;
   initialPosts: SitePost[];
   category?: string;
+  /** When set, only posts published on or after this instant are shown (merged list). */
+  publishedAfter?: Date | null;
 };
 
-export function TaskListClient({ task, initialPosts, category }: Props) {
+export function TaskListClient({ task, initialPosts, category, publishedAfter }: Props) {
   const localPosts = getLocalPostsForTask(task);
 
   const merged = useMemo(() => {
@@ -34,23 +36,30 @@ export function TaskListClient({ task, initialPosts, category }: Props) {
     });
 
     const normalizedCategory = category ? normalizeCategory(category) : "all";
-    if (normalizedCategory === "all") {
-      return combined.filter((post) => {
-        const content = post.content && typeof post.content === "object" ? post.content : {};
-        const value = typeof (content as any).category === "string" ? (content as any).category : "";
-        return !value || isValidCategory(value);
-      });
-    }
+    const categoryFiltered =
+      normalizedCategory === "all"
+        ? combined.filter((post) => {
+            const content = post.content && typeof post.content === "object" ? post.content : {};
+            const value = typeof (content as any).category === "string" ? (content as any).category : "";
+            return !value || isValidCategory(value);
+          })
+        : combined.filter((post) => {
+            const content = post.content && typeof post.content === "object" ? post.content : {};
+            const value =
+              typeof (content as any).category === "string"
+                ? normalizeCategory((content as any).category)
+                : "";
+            return value === normalizedCategory;
+          });
 
-    return combined.filter((post) => {
-      const content = post.content && typeof post.content === "object" ? post.content : {};
-      const value =
-        typeof (content as any).category === "string"
-          ? normalizeCategory((content as any).category)
-          : "";
-      return value === normalizedCategory;
+    if (!publishedAfter) return categoryFiltered;
+
+    const t0 = publishedAfter.getTime();
+    return categoryFiltered.filter((post) => {
+      const t = post.publishedAt ? new Date(post.publishedAt).getTime() : 0;
+      return t >= t0;
     });
-  }, [category, initialPosts, localPosts]);
+  }, [category, initialPosts, localPosts, publishedAfter]);
 
   if (!merged.length) {
     return (
