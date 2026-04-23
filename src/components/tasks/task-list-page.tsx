@@ -10,6 +10,7 @@ import { CATEGORY_OPTIONS, normalizeCategory } from '@/lib/categories'
 import { taskIntroCopy } from '@/config/site.content'
 import { getFactoryState } from '@/design/factory/get-factory-state'
 import { TASK_LIST_PAGE_OVERRIDE_ENABLED, TaskListPageOverride } from '@/overrides/task-list-page'
+import { parsePublishedAfter } from '@/lib/date-filters'
 
 const taskIcons: Record<TaskKey, any> = {
   listing: Building2,
@@ -40,14 +41,23 @@ const variantShells = {
   'sbm-library': 'bg-[linear-gradient(180deg,#f7f8fc_0%,#ffffff_100%)]',
 } as const
 
-export async function TaskListPage({ task, category }: { task: TaskKey; category?: string }) {
-  if (TASK_LIST_PAGE_OVERRIDE_ENABLED) {
-    return await TaskListPageOverride({ task, category })
+export async function TaskListPage({
+  task,
+  category,
+  dateRange,
+}: {
+  task: TaskKey
+  category?: string
+  dateRange?: string
+}) {
+  if (TASK_LIST_PAGE_OVERRIDE_ENABLED && task === 'mediaDistribution') {
+    return await TaskListPageOverride({ task, category, dateRange })
   }
 
   const taskConfig = getTaskConfig(task)
   const posts = await fetchTaskPosts(task, 30)
   const normalizedCategory = category ? normalizeCategory(category) : 'all'
+  const publishedAfter = parsePublishedAfter(dateRange)
   const intro = taskIntroCopy[task]
   const baseUrl = SITE_CONFIG.baseUrl.replace(/\/$/, '')
   const schemaItems = posts.slice(0, 10).map((post, index) => ({
@@ -252,7 +262,7 @@ export async function TaskListPage({ task, category }: { task: TaskKey; category
           </section>
         ) : null}
 
-        <TaskListClient task={task} initialPosts={posts} category={normalizedCategory} />
+        <TaskListClient task={task} initialPosts={posts} category={normalizedCategory} publishedAfter={publishedAfter} />
       </main>
       <Footer />
     </div>

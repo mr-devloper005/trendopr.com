@@ -1,10 +1,10 @@
 export const siteIdentity = {
   code: process.env.NEXT_PUBLIC_SITE_CODE || '1adaex2epo',
-  name: process.env.NEXT_PUBLIC_SITE_NAME || 'Trendo PR',
-  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Independent media updates',
+  name: process.env.NEXT_PUBLIC_SITE_NAME || 'TrendoPR.com',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Press release distribution for teams that need clear reach.',
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
-    'A simple newsroom-style publication for announcements, coverage, and media updates on Trendo PR.',
+    'TrendoPR.com helps organizations publish announcements, distribute them across channels, and track engagement in one calm, editorial workspace.',
   domain: process.env.NEXT_PUBLIC_SITE_DOMAIN || 'trendopr.com',
   url: process.env.NEXT_PUBLIC_SITE_URL || 'https://trendopr.com',
   ogImage: process.env.NEXT_PUBLIC_SITE_OG_IMAGE || '/og-default.png',
