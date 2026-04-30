@@ -21,11 +21,11 @@ function getLoginConfig(kind: ReturnType<typeof getProductKind>) {
   }
   if (kind === 'editorial') {
     return {
-      shell: 'bg-[#fbf6ee] text-[#241711]',
-      panel: 'border border-[#dcc8b7] bg-[#fffdfa]',
-      side: 'border border-[#e6d6c8] bg-[#fff4e8]',
-      muted: 'text-[#6e5547]',
-      action: 'bg-[#241711] text-[#fff1e2] hover:bg-[#3a241b]',
+      shell: 'bg-[#da0037] text-white',
+      panel: 'border border-white/20 bg-white/10',
+      side: 'border border-white/20 bg-white/5',
+      muted: 'text-white/80',
+      action: 'bg-white text-[#da0037] hover:bg-white/90',
       icon: FileText,
       title: 'Sign in to your publication workspace',
       body: 'Draft, review, and publish long-form work with the calmer reading system intact.',
@@ -44,11 +44,11 @@ function getLoginConfig(kind: ReturnType<typeof getProductKind>) {
     }
   }
   return {
-    shell: 'bg-[#f7f1ea] text-[#261811]',
-    panel: 'border border-[#ddcdbd] bg-[#fffaf4]',
-    side: 'border border-[#e8dbce] bg-[#f3e8db]',
-    muted: 'text-[#71574a]',
-    action: 'bg-[#5b2b3b] text-[#fff0f5] hover:bg-[#74364b]',
+    shell: 'bg-[#da0037] text-white',
+    panel: 'border border-white/20 bg-white/10',
+    side: 'border border-white/20 bg-white/5',
+    muted: 'text-white/80',
+    action: 'bg-white text-[#da0037] hover:bg-white/90',
     icon: Bookmark,
     title: 'Open your curated collections',
     body: 'Manage saved resources, collection notes, and curator identity from a calmer workspace.',

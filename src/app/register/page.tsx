@@ -21,11 +21,11 @@ function getRegisterConfig(kind: ReturnType<typeof getProductKind>) {
   }
   if (kind === 'editorial') {
     return {
-      shell: 'bg-[#fbf6ee] text-[#241711]',
-      panel: 'border border-[#dcc8b7] bg-[#fffdfa]',
-      side: 'border border-[#e6d6c8] bg-[#fff4e8]',
-      muted: 'text-[#6e5547]',
-      action: 'bg-[#241711] text-[#fff1e2] hover:bg-[#3a241b]',
+      shell: 'bg-[#da0037] text-white',
+      panel: 'border border-white/20 bg-white/10',
+      side: 'border border-white/20 bg-white/5',
+      muted: 'text-white/80',
+      action: 'bg-white text-[#da0037] hover:bg-white/90',
       icon: FileText,
       title: 'Start your contributor workspace',
       body: 'Create a profile for essays, issue drafts, editorial review, and publication scheduling.',
@@ -44,11 +44,11 @@ function getRegisterConfig(kind: ReturnType<typeof getProductKind>) {
     }
   }
   return {
-    shell: 'bg-[#f7f1ea] text-[#261811]',
-    panel: 'border border-[#ddcdbd] bg-[#fffaf4]',
-    side: 'border border-[#e8dbce] bg-[#f3e8db]',
-    muted: 'text-[#71574a]',
-    action: 'bg-[#5b2b3b] text-[#fff0f5] hover:bg-[#74364b]',
+    shell: 'bg-[#da0037] text-white',
+    panel: 'border border-white/20 bg-white/10',
+    side: 'border border-white/20 bg-white/5',
+    muted: 'text-white/80',
+    action: 'bg-white text-[#da0037] hover:bg-white/90',
     icon: Bookmark,
     title: 'Create a curator account',
     body: 'Build shelves, save references, and connect collections to your profile without a generic feed setup.',
