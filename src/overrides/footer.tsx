@@ -27,11 +27,6 @@ export function FooterOverride() {
                 </li>
               ) : null}
               <li>
-                <Link href="/pricing" className="hover:text-white">
-                  Pricing
-                </Link>
-              </li>
-              <li>
                 <Link href="/search" className="hover:text-white">
                   Search archive
                 </Link>
@@ -49,11 +44,6 @@ export function FooterOverride() {
               <li>
                 <Link href="/contact" className="hover:text-white">
                   Contact
-                </Link>
-              </li>
-              <li>
-                <Link href="/careers" className="hover:text-white">
-                  Careers
                 </Link>
               </li>
             </ul>

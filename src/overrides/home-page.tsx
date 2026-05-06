@@ -57,7 +57,7 @@ export async function HomePageOverride() {
         />
         <div className="relative mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:flex lg:items-center lg:gap-12 lg:px-8 lg:py-20">
           <div className="max-w-2xl">
-            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-white/80">Press release distribution</p>
+            <p className="text-[11px] font-semibold uppercase tracking-[0.3em] text-white/80">Release media distribution</p>
             <h1 className="mt-4 font-[family-name:var(--font-display)] text-4xl font-semibold leading-[1.08] tracking-[-0.035em] sm:text-5xl lg:text-[3.15rem]">
               Reach journalists, readers, and search with wire-ready announcements.
             </h1>
@@ -138,7 +138,7 @@ export async function HomePageOverride() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
             <div>
-              <h2 className="text-3xl font-semibold tracking-[-0.03em]">Latest press releases</h2>
+              <h2 className="text-3xl font-semibold tracking-[-0.03em]">Latest release media</h2>
               <p className="mt-2 text-[#444444]">Fresh entries from the TrendoPR wire—optimized for fast scanning.</p>
             </div>
             <Link
@@ -171,7 +171,7 @@ export async function HomePageOverride() {
                   </div>
                   <div className="flex flex-1 flex-col p-5">
                     <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-[#DA0037]">
-                      {String((post.content as { category?: string } | undefined)?.category || 'Press release')}
+                      {String((post.content as { category?: string } | undefined)?.category || 'Release media')}
                     </p>
                     <h3 className="mt-2 line-clamp-2 text-lg font-semibold leading-snug text-[#171717] group-hover:text-[#DA0037]">
                       {post.title}
@@ -241,10 +241,6 @@ export async function HomePageOverride() {
                   <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#DA0037]" />
                   Detail pages with hero imagery, share tools, and related releases.
                 </li>
-                <li className="flex gap-3">
-                  <span className="mt-1 h-2 w-2 shrink-0 rounded-full bg-[#DA0037]" />
-                  Pricing that maps to distribution depth—not hidden bundles.
-                </li>
               </ul>
             </div>
             <div className="relative overflow-hidden rounded-[2rem] border border-[#e8e8e8] bg-[#EDEDED] shadow-[0_30px_80px_rgba(23,23,23,0.08)]">
@@ -270,12 +266,6 @@ export async function HomePageOverride() {
           </p>
           <div className="flex flex-wrap gap-3">
             <Link
-              href="/pricing"
-              className="inline-flex h-12 items-center justify-center rounded-full bg-white px-6 text-sm font-semibold text-[#DA0037] shadow-sm transition hover:bg-[#f7f7f7]"
-            >
-              Compare plans
-            </Link>
-            <Link
               href="/contact"
               className="inline-flex h-12 items-center justify-center rounded-full border border-white/70 px-6 text-sm font-semibold text-white hover:bg-white/10"
             >
@@ -300,10 +290,6 @@ export async function HomePageOverride() {
             Explore the{' '}
             <Link href="/updates" className="font-semibold text-[#DA0037] underline-offset-4 hover:underline">
               latest releases
-            </Link>
-            , compare{' '}
-            <Link href="/pricing" className="font-semibold text-[#DA0037] underline-offset-4 hover:underline">
-              pricing tiers
             </Link>
             , or{' '}
             <Link href="/contact" className="font-semibold text-[#DA0037] underline-offset-4 hover:underline">

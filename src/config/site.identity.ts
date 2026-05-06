@@ -1,7 +1,7 @@
 export const siteIdentity = {
   code: process.env.NEXT_PUBLIC_SITE_CODE || '1adaex2epo',
   name: process.env.NEXT_PUBLIC_SITE_NAME || 'TrendoPR.com',
-  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Press release distribution for teams that need clear reach.',
+  tagline: process.env.NEXT_PUBLIC_SITE_TAGLINE || 'Release media distribution for teams that need clear reach.',
   description:
     process.env.NEXT_PUBLIC_SITE_DESCRIPTION ||
     'TrendoPR.com helps organizations publish announcements, distribute them across channels, and track engagement in one calm, editorial workspace.',
