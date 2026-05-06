@@ -43,7 +43,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
   const category =
     (typeof content.category === 'string' && content.category) ||
     post.tags?.find((t) => typeof t === 'string') ||
-    'Press release'
+    'Release media'
 
   const related = (await fetchTaskPosts('mediaDistribution', 12, { fresh: true }))
     .filter((item) => item.slug !== slug)
@@ -54,14 +54,6 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
   const canonical = `${base}${taskConfig?.route || '/updates'}/${post.slug}`
   const toAbs = (u: string) => (u.startsWith('http') ? u : `${base}${u.startsWith('/') ? u : `/${u}`}`)
   const heroImage = images[0] ? toAbs(images[0]) : undefined
-  const published = post.publishedAt
-    ? new Date(post.publishedAt).toLocaleDateString('en-US', {
-        month: 'long',
-        day: 'numeric',
-        year: 'numeric',
-      })
-    : ''
-
   const articleSchema = {
     '@context': 'https://schema.org',
     '@type': 'NewsArticle',
@@ -98,7 +90,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
               </Link>
               <span className="mx-2 opacity-50">/</span>
               <Link href={taskConfig?.route || '/updates'} className="hover:text-[#DA0037]">
-                Press releases
+                Release media
               </Link>
               <span className="mx-2 opacity-50">/</span>
               <span className="line-clamp-1 text-[#171717]">{post.title}</span>
@@ -116,9 +108,7 @@ export async function TaskDetailPageOverride({ task, slug }: { task: TaskKey; sl
               <span>
                 By <span className="font-semibold text-[#171717]">{post.authorName || 'TrendoPR Desk'}</span>
               </span>
-              {published ? (
-                <time dateTime={post.publishedAt ? new Date(post.publishedAt).toISOString() : undefined}>{published}</time>
-              ) : null}
+
             </div>
 
             <div className="mt-8">

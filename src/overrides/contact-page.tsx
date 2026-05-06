@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { NavbarShell } from '@/components/shared/navbar-shell'
 import { Footer } from '@/components/shared/footer'
 import { SITE_CONFIG } from '@/lib/site-config'
@@ -32,30 +31,6 @@ export function ContactPageOverride() {
           </div>
 
           <div className="space-y-6">
-            <div className="rounded-2xl border border-[#e8e8e8] bg-[#EDEDED]/80 p-6 sm:p-8">
-              <h3 className="text-lg font-semibold">Desk hours</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#444444]">
-                Monday – Friday · 8:00 – 18:00 (local site time)
-              </p>
-              <p className="mt-4 text-sm leading-relaxed text-[#444444]">
-                For urgent corrections on a live release, reference the headline and URL inside your message so we can escalate
-                immediately.
-              </p>
-            </div>
-            <div className="rounded-2xl border border-[#e8e8e8] bg-white p-6 sm:p-8">
-              <h3 className="text-lg font-semibold">Before you write</h3>
-              <p className="mt-3 text-sm leading-relaxed text-[#444444]">
-                Review{' '}
-                <Link href="/pricing" className="font-semibold text-[#DA0037] hover:underline">
-                  pricing
-                </Link>{' '}
-                for distribution tiers, or open the{' '}
-                <Link href="/updates" className="font-semibold text-[#DA0037] hover:underline">
-                  archive
-                </Link>{' '}
-                to see how published releases render on TrendoPR.
-              </p>
-            </div>
             <div className="rounded-2xl border border-dashed border-[#DA0037]/35 bg-[#fff5f7] p-6 sm:p-8">
               <p className="text-sm font-semibold text-[#171717]">{SITE_CONFIG.name}</p>
               <p className="mt-2 text-sm text-[#444444]">

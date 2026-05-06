@@ -84,12 +84,6 @@ export default function AboutPage() {
                 Browse releases
               </Link>
               <Link
-                href="/pricing"
-                className="inline-flex h-11 items-center justify-center rounded-full border border-[#171717] bg-white px-6 text-sm font-semibold text-[#171717] hover:bg-[#fafafa]"
-              >
-                View pricing
-              </Link>
-              <Link
                 href="/contact"
                 className="inline-flex h-11 items-center justify-center rounded-full border border-transparent px-6 text-sm font-semibold text-[#DA0037] hover:underline"
               >

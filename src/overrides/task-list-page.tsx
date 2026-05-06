@@ -33,7 +33,7 @@ export async function TaskListPageOverride({
             <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
               <div className="max-w-2xl">
                 <p className="text-[11px] font-semibold uppercase tracking-[0.28em] text-[#DA0037]">Wire room</p>
-                <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Press release archive</h1>
+                <h1 className="mt-3 text-4xl font-semibold tracking-[-0.04em] sm:text-5xl">Release media archive</h1>
                 <p className="mt-4 text-base leading-relaxed text-[#444444]">
                   Browse announcements by category or narrow the feed by publish window. Open any card for the full story,
                   imagery, and share tools.
