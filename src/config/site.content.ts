@@ -2,7 +2,7 @@ import type { TaskKey } from '@/lib/site-config'
 
 export const siteContent = {
   navbar: {
-    tagline: 'Press release distribution',
+    tagline: 'Release media distribution',
   },
   footer: {
     tagline: 'Reach journalists, readers, and partners with structured releases.',
@@ -13,7 +13,7 @@ export const siteContent = {
     description:
       'TrendoPR.com is built for communications teams that need dependable publishing, consistent formatting, and a public archive visitors can scan in seconds.',
     primaryCta: {
-      label: 'Browse press releases',
+      label: 'Browse release media',
       href: '/updates',
     },
     secondaryCta: {
@@ -29,13 +29,13 @@ export const siteContent = {
   },
   home: {
     metadata: {
-      title: 'TrendoPR.com — Press release distribution',
+      title: 'TrendoPR.com — Release media distribution',
       description:
         'Publish announcements, reach media lists, and keep a polished public archive with TrendoPR.com.',
-      openGraphTitle: 'TrendoPR.com — Press release distribution',
+      openGraphTitle: 'TrendoPR.com — Release media distribution',
       openGraphDescription:
-        'Editorial-grade press releases, distribution workflows, and a searchable archive for your organization.',
-      keywords: ['press releases', 'media distribution', 'announcements', 'PR wire', 'TrendoPR'],
+        'Editorial-grade release media, distribution workflows, and a searchable archive for your organization.',
+      keywords: ['release media', 'media distribution', 'announcements', 'PR wire', 'TrendoPR'],
     },
     introBadge: 'Why TrendoPR',
     introTitle: 'Built for communications velocity without noisy feeds.',
@@ -74,7 +74,7 @@ export const siteContent = {
       href: '/pricing',
     },
   },
-  taskSectionHeading: 'Latest press releases',
+  taskSectionHeading: 'Latest release media',
   taskSectionDescriptionSuffix: 'Fresh stories from the TrendoPR wire.',
 } as const
 
@@ -108,7 +108,7 @@ export const taskPageMetadata: Record<Exclude<TaskKey, 'comment' | 'org' | 'soci
     description: 'Open PDFs and downloadable files.',
   },
   mediaDistribution: {
-    title: 'Press releases',
+    title: 'Release media',
     description: 'Browse the TrendoPR.com wire—announcements, launches, and media updates.',
   },
 }
@@ -128,7 +128,7 @@ export const taskIntroCopy: Record<
   comment: { title: 'Comments', paragraphs: ['Commentary and response posts.'], links: [{ label: 'Home', href: '/' }] },
   org: { title: 'Organizations', paragraphs: ['Organization pages and entities.'], links: [{ label: 'Home', href: '/' }] },
   mediaDistribution: {
-    title: 'Press releases',
+    title: 'Release media',
     paragraphs: [
       'This archive mirrors a classic wire: bold headlines, readable summaries, and fast filters for category and publish window.',
       'Open any card to read the full story, share it outward, and explore related releases without leaving the TrendoPR system.',

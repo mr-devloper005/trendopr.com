@@ -36,22 +36,13 @@ export function NavbarOverride() {
 
           <div className="hidden flex-1 items-center justify-end gap-2 md:flex">
             <Link
-              href="/pricing"
-              className={cn(
-                'rounded-full px-3 py-2 text-sm font-semibold text-[#444444] transition hover:text-[#171717]',
-                pathname === '/pricing' && 'text-[#DA0037]',
-              )}
-            >
-              Pricing
-            </Link>
-            <Link
               href="/updates"
               className={cn(
                 'rounded-full px-3 py-2 text-sm font-semibold text-[#444444] transition hover:text-[#171717]',
                 pathname.startsWith('/updates') && 'text-[#DA0037]',
               )}
             >
-              Press releases
+              Release media
             </Link>
             <Link
               href="/about"
@@ -129,10 +120,7 @@ export function NavbarOverride() {
         <div className="border-b border-[#ebebeb] bg-white px-4 py-4 md:hidden">
           <div className="flex flex-col gap-1">
             <Link href="/updates" className="rounded-xl px-3 py-3 text-base font-semibold" onClick={() => setOpen(false)}>
-              Press releases
-            </Link>
-            <Link href="/pricing" className="rounded-xl px-3 py-3 text-base font-semibold" onClick={() => setOpen(false)}>
-              Pricing
+              Release media
             </Link>
             <Link href="/about" className="rounded-xl px-3 py-3 text-base font-semibold" onClick={() => setOpen(false)}>
               About
